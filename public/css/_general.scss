@@ -1,0 +1,165 @@
+body {
+  background-color: #333333;
+}
+
+.side {
+  display: none;
+  @include min_xs {
+    display: block;
+    @include flex();
+    @include flex_absolute_center();
+  }
+;
+
+  .sidebanner {
+    width: 80%;
+    min-height: 100vh;
+    height: 100%;
+    background-color: $flagColor;
+
+    .logo {
+      padding-top: 20px;
+      text-align: center;
+
+      img {
+        width: 70%;
+      }
+    }
+
+  }
+}
+
+.top {
+  background-color: $flagColor;
+  @include flex();
+  @include flex_absolute_center();
+  @include min_xs {
+    display: none;
+  }
+;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 5px;
+  @include border_rad($generalBorder);
+
+  img {
+    width: 30%;
+  }
+}
+
+.main {
+  .breadcrumb_space {
+    // padding-top: 1vw;
+    // padding-bottom: 1vw;
+    margin-top: 10px;
+
+    margin-bottom: 0.1vw !important;
+
+    ol.breadcrumb {
+      background-color: $flagColor;
+
+      li {
+        a, a:focus, a:visited {
+          color: white !important;
+        }
+      }
+
+      li.active{
+        color: white;
+        font-style: italic;
+      }
+
+    }
+
+  }
+
+  .folders {
+    width: 100%;
+    display: grid;
+    grid-column-gap: $gridGap;
+    grid-row-gap: $gridGap;
+    grid-template-columns: repeat(auto-fit, 100%);
+    overflow: hidden;
+    margin-bottom: 16px;
+    @include min_xs() {
+      grid-template-columns: repeat(auto-fit, calc(50% - #{$gridGap}));
+    }
+
+    @include min_md() {
+      grid-template-columns: repeat(auto-fit, calc(50% - #{$gridGap}));
+    }
+
+    @include min_lg() {
+      grid-template-columns: repeat(auto-fit, calc(33% - #{$gridGap}));
+    }
+
+    @include min_xl() {
+      grid-template-columns: repeat(auto-fit, calc(25% - #{$gridGap}));
+    }
+
+    .single {
+      cursor: pointer;
+      @include flex();
+      @include flex_justify(start);
+      @include flex_align(center);
+      padding: 6px 8px;
+      @include border_rad($generalBorder);
+      background-color: $flagColor;
+
+      img {
+        width: 35px;
+      }
+
+      span {
+        color: white;
+        margin-left: 10px;
+      }
+    }
+
+    .single:hover{
+      background-color: $flagColorHighlight;
+    }
+
+
+  }
+
+  .gallery {
+    width: 100%;
+
+    .gallery_images {
+      display: grid;
+      grid-column-gap: $gridGap;
+      grid-row-gap: $gridGap;
+      grid-template-columns: repeat(auto-fit, 100%);
+      overflow: hidden;
+
+
+      @include min_xs() {
+        grid-template-columns: repeat(auto-fit, calc(50% - #{$gridGap}));
+      }
+
+      @include min_md() {
+        grid-template-columns: repeat(auto-fit, calc(33% - #{$gridGap}));
+      }
+
+      @include min_lg() {
+        grid-template-columns: repeat(auto-fit, calc(25% - #{$gridGap}));
+      }
+
+      @include min_xl() {
+        grid-template-columns: repeat(auto-fit, calc(20% - #{$gridGap}));
+      }
+
+
+      .single {
+        cursor: pointer;
+
+        img {
+          width: 100%;
+          aspect-ratio: 16 / 9;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
