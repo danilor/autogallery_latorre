@@ -508,6 +508,7 @@ body {
   font-size: 18px;
   overflow-wrap: break-word;
   color: white;
+  text-align: center;
 }
 .main .folders .single:hover {
   background-color: rgba(243, 52, 23, 0.5);
