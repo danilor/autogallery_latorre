@@ -548,7 +548,7 @@ body {
 }
 .main .gallery .gallery_images .single img {
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/12;
   object-fit: cover;
 }
 
