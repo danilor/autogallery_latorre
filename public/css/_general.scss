@@ -78,41 +78,57 @@ body {
     display: grid;
     grid-column-gap: $gridGap;
     grid-row-gap: $gridGap;
-    grid-template-columns: repeat(auto-fit, 100%);
+    grid-template-columns: repeat(auto-fit, 50%);
     overflow: hidden;
     margin-bottom: 16px;
     @include min_xs() {
-      grid-template-columns: repeat(auto-fit, calc(50% - #{$gridGap}));
-    }
-
-    @include min_md() {
-      grid-template-columns: repeat(auto-fit, calc(50% - #{$gridGap}));
-    }
-
-    @include min_lg() {
       grid-template-columns: repeat(auto-fit, calc(33% - #{$gridGap}));
     }
 
-    @include min_xl() {
+    @include min_md() {
+      grid-template-columns: repeat(auto-fit, calc(33% - #{$gridGap}));
+    }
+
+    @include min_lg() {
       grid-template-columns: repeat(auto-fit, calc(25% - #{$gridGap}));
     }
 
+    @include min_xl() {
+      grid-template-columns: repeat(auto-fit, calc(20% - #{$gridGap}));
+    }
+
     .single {
+      position: relative;
       cursor: pointer;
       @include flex();
-      @include flex_justify(start);
+      @include flex_justify(center);
       @include flex_align(center);
+      flex-direction: column;
       padding: 6px 8px;
       @include border_rad($generalBorder);
       background-color: $flagColor;
 
-      img {
-        width: 35px;
-      }
+      aspect-ratio: 1;
 
+      .image_space{
+        height: 80%;
+        @include flex();
+        @include flex_justify(center);
+        @include flex_align(center);
+        img {
+          width: 90%;
+          aspect-ratio: 1;
+        }
+      }
       span {
+        @include flex();
+        @include flex_justify(center);
+        @include flex_align(center);
+        height: 20%;
+        font-size: 18px;
+        overflow-wrap: break-word;
         color: white;
-        margin-left: 10px;
+      
       }
     }
 
@@ -130,7 +146,7 @@ body {
       display: grid;
       grid-column-gap: $gridGap;
       grid-row-gap: $gridGap;
-      grid-template-columns: repeat(auto-fit, 100%);
+      grid-template-columns: repeat(auto-fit, 50%); 
       overflow: hidden;
 
 

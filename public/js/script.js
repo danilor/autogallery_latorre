@@ -57,7 +57,7 @@ function renderImages(images){
         return;
     }
     $('#images').html(images.map(function (item) {
-        const url = library + initialStructure.join('/') + "/" + item;
+        const url = library + initialStructure.join('/') + "/" + item.url;
         return templates.singleImage.map(render({"url": url})).join('');
     }));
 }
@@ -72,7 +72,13 @@ function renderFolders(folders) {
         return;
     }
     $('#folders').html(folders.map(function (item) {
-        return templates.singleFolder.map(render({"name": item})).join('');
+
+        let img = 'img/folder.png';
+        if( item.logo !== null ){
+            img = library + initialStructure.join('/') + "/" + item.name +  "/" + item.logo; 
+        }
+
+        return templates.singleFolder.map(render({"name": item.name, "image": img})).join('');
     }));
 }
 

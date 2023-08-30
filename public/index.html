@@ -46,7 +46,11 @@
 
             <script type="text/template" data-template="singleFolder">
                 <div class="single" onclick="changeFolder('${name}')">
-                    <img src="img/folder.png" alt="Folder"/> <span>${name}</span>
+                    <div class="image_space">
+                        <img src="${image}" alt="Folder"/>
+                    </div>
+                    
+                    <span>${name}</span>
                 </div>
             </script>
 

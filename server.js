@@ -18,10 +18,17 @@ const port = 80; // We can change this port
 const publicFolder = 'public';
 const initialFolder = 'library';
 
-
+/**
+ * All the availables extensions for the images
+ */
 const availableExtensions = [
   'jpg','jpeg','png','gif'
 ];
+
+/**
+ * This is the logo we want to search in each folder
+ */
+const logoImage = 'logo.png';
 
 /**
  * Other libraries
@@ -58,31 +65,35 @@ app.get(apiPrefix + 'get_folder/:path?', async (req, res) => {
         actualPath = publicFolder + path.sep + initialFolder + path.sep + p.split(',').join(path.sep);
     }
 
-
     const allFiles = await fs.readdirSync(actualPath);
     const folders = [];
     const files = [];
 
-
     for(let i = 0; i < allFiles.length; i++){
         const folderToCheck = actualPath + path.sep + allFiles[i];
-        Console.log('Checking file');
-        Console.log(folderToCheck);
-        Console.log(folderToCheck);
+        // Console.log('Checking file');
+        // Console.log(folderToCheck);
+        // Console.log(folderToCheck);
         const isDirExists = await fs.existsSync(folderToCheck) && await fs.lstatSync(folderToCheck).isDirectory();
+
         if( isDirExists ){
-            Console.log('Seems to be a folder');
-            folders.push(allFiles[i]);
+            // Console.log('Seems to be a folder');
+            const logoExistence = await fs.existsSync(folderToCheck + path.sep + logoImage);
+            folders.push({
+                name: allFiles[i],
+                logo: ( logoExistence ? logoImage : null )
+            });
         }else{
-            Console.log('Seems to be file');
+            // Console.log('Seems to be file');
             const extension = path.extname(allFiles[i]).replace('.','');
-            Console.log('Extension: ' + extension);
-            if( availableExtensions.includes(extension.toLowerCase()) ){
-                files.push(allFiles[i]);
+            // Console.log('Extension: ' + extension);
+            if( availableExtensions.includes(extension.toLowerCase()) && allFiles[i].toLowerCase() !== logoImage ){
+                files.push({
+                    url: allFiles[i],
+                });
             }
         }
     }
-
 
     // res.send('Received');
     res.status(200).json({
