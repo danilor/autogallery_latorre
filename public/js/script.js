@@ -7,6 +7,7 @@ const getFolderEndPoint = 'api/get_folder/';
 const templates = {};
 const library = 'library/';
 
+let gallery = null;
 
 /**
  * JSON call to get current structure
@@ -60,6 +61,13 @@ function renderImages(images){
         const url = library + initialStructure.join('/') + "/" + item.url;
         return templates.singleImage.map(render({"url": url})).join('');
     }));
+
+    // As A jQuery Plugin -->
+
+    gallery = $('.gallery_images .single a').simpleLightbox({
+
+    });
+
 }
 
 /**
