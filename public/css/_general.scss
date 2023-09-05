@@ -1,5 +1,7 @@
 body {
-  background-color: #333333;
+  // background-color: #333333;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.77), rgba(255, 255, 255, 0.58)), url('./../img/back.jpg');
+  background-size: auto;
 }
 
 .side {
@@ -64,7 +66,7 @@ body {
         }
       }
 
-      li.active{
+      li.active {
         color: white;
         font-style: italic;
       }
@@ -78,11 +80,11 @@ body {
     display: grid;
     grid-column-gap: $gridGap;
     grid-row-gap: $gridGap;
-    grid-template-columns: repeat(auto-fit, 50%);
+    grid-template-columns: repeat(auto-fit, calc(50% - #{$gridGap}));
     overflow: hidden;
     margin-bottom: 16px;
     @include min_xs() {
-      grid-template-columns: repeat(auto-fit, calc(33% - #{$gridGap}));
+      grid-template-columns: repeat(auto-fit, calc(50% - #{$gridGap}));
     }
 
     @include min_md() {
@@ -110,16 +112,18 @@ body {
 
       aspect-ratio: 1;
 
-      .image_space{
+      .image_space {
         height: 80%;
         @include flex();
         @include flex_justify(center);
         @include flex_align(center);
+
         img {
           width: 80%;
           aspect-ratio: 1;
         }
       }
+
       span {
         @include flex();
         @include flex_justify(center);
@@ -129,11 +133,11 @@ body {
         overflow-wrap: break-word;
         color: white;
         text-align: center;
-      
+
       }
     }
 
-    .single:hover{
+    .single:hover {
       background-color: $flagColorHighlight;
     }
 
@@ -147,7 +151,7 @@ body {
       display: grid;
       grid-column-gap: $gridGap;
       grid-row-gap: $gridGap;
-      grid-template-columns: repeat(auto-fit, 50%); 
+      grid-template-columns: repeat(auto-fit, calc(50% - #{$gridGap}));
       overflow: hidden;
 
 
